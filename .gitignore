@@ -6,5 +6,5 @@
 *.out
 
 #specific files to ignore
-#conf/config.json
+conf/config.json
 node_modules/*
