@@ -13,3 +13,7 @@ util.print(util.inspect(obj) + '\n');
   *   http://twitter.github.com/bootstrap/javascript.html#modals
   *   https://github.com/jackmoore/colorbox
   *   http://leanmodal.finelysliced.com.au/ (no iFrame support)
+*   Other bookshelf apps:
+  *   http://www.steveworkman.com/html5-2/2010/css3-bookshelf/
+  *   http://codecanyon.net/item/multipurpose-bookshelf-slider-jquery-plugin/1985655
+  *   http://christophzillgens.com/en/articles/css3-3d-bookshelf
