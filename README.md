@@ -8,3 +8,8 @@ js-bookshelf
 var util = require('util');
 util.print(util.inspect(obj) + '\n');
 ```
+
+*   Selection of modal dialog tools:
+  *   http://twitter.github.com/bootstrap/javascript.html#modals
+  *   https://github.com/jackmoore/colorbox
+  *   http://leanmodal.finelysliced.com.au/ (no iFrame support)
