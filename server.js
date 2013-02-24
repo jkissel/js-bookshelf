@@ -2,17 +2,16 @@
 
 "use strict";
 
+var util = require('util');
 var fs = require('fs');
+var encoding = 'UTF-8';
 var configFile = 'conf/config.json';
+var config = readConfigFromFile(configFile, encoding);
 
 var express = require('express');
 var app = express();
 
-var util = require('util');
 var OperationHelper = require('json-apac').OperationHelper;
-var encoding = 'UTF-8';
-
-var config = readConfigFromFile(configFile, encoding);
 
 var opHelper = new OperationHelper({
   awsId:     config.awsId,
