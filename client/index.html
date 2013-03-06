@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>JS Bookshelf</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/bootstrap-full.css" />
+</head>
+<body>
+  <ul id="bookshelf">
+    <li><img src="img/sample1.jpg" /></li>
+    <li><img src="img/sample2.jpg" /></li>
+    <li><img src="img/sample3.jpg" /></li>
+    <li><img src="img/sample2.jpg" /></li>
+    <li><img src="img/sample3.jpg" /></li>
+    <li><img src="img/sample2.jpg" /></li>
+    <li><img src="img/sample3.jpg" /></li>
+    <li><img src="img/sample2.jpg" /></li>
+    <li><img src="img/sample3.jpg" /></li>
+    <li><img src="img/sample2.jpg" /></li>
+    <li><img src="img/sample3.jpg" /></li>
+  </ul>
+
+  <a href="#searchDialog" role="button" class="btn" data-toggle="modal">Add book</a>
+     
+  <!-- Modal Dialog -->
+  <div id="searchDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="searchDialogLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="searchDialogLabel">Search for new books</h3>
+      <p>
+        <form action="">
+          <input type="search" autocomplete="off" placeholder="type book name"></input>
+          <button class="btn">Search</button>
+        </form>
+      </p>
+    </div>
+    <div class="modal-body">
+      <ul>
+        <li><img src="img/sample3.jpg" /></li>
+        <li><img src="img/sample2.jpg" /></li>
+        <li><img src="img/sample3.jpg" /></li>
+        <li><img src="img/sample2.jpg" /></li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary">Add book</button>
+    </div>
+  </div>
+  
+  <!-- Script section -->
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script href="js/bookshelf.js"></script>
+</body>
+</html>
+

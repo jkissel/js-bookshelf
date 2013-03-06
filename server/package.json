@@ -1,0 +1,8 @@
+{
+  "name": "js-bookshelf",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "*",
+    "json-apac": "*"
+  }
+}
