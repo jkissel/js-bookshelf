@@ -15,7 +15,8 @@ util.print(util.inspect(obj) + '\n');
   *   http://leanmodal.finelysliced.com.au/ (no iFrame support)
 *   CouchDB
   * API Reference: http://wiki.apache.org/couchdb/Complete_HTTP_API_Reference
-  * http://www.saggingcouch.com/
+  * http://wiki.apache.org/couchdb/Security_Features_Overview
+  * http://www.saggingcouch.com/ (JS interface)
 *   Other bookshelf apps:
   *   http://www.steveworkman.com/html5-2/2010/css3-bookshelf/
   *   http://codecanyon.net/item/multipurpose-bookshelf-slider-jquery-plugin/1985655
