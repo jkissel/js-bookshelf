@@ -14,6 +14,7 @@ util.print(util.inspect(obj) + '\n');
   *   https://github.com/jackmoore/colorbox
   *   http://leanmodal.finelysliced.com.au/ (no iFrame support)
 *   CouchDB
+  * API Reference: http://wiki.apache.org/couchdb/Complete_HTTP_API_Reference
   * http://www.saggingcouch.com/
 *   Other bookshelf apps:
   *   http://www.steveworkman.com/html5-2/2010/css3-bookshelf/
