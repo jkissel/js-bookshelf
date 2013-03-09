@@ -19,6 +19,7 @@ util.print(util.inspect(obj) + '\n');
   * New documentation: http://couchdb.readthedocs.org/en/latest/
   * http://wiki.apache.org/couchdb/Security_Features_Overview
   * User creation: http://blog.mattwoodward.com/2012/03/definitive-guide-to-couchdb.html
+  * User creation 2: http://blog.lizconlan.com/sandbox/securing-couchdb.html
   * http://www.saggingcouch.com/ (JS interface)
   * Configuring firewall: http://chrismckee.co.uk/setting-up-couchdb-on-ubuntu/
 *   Other bookshelf apps:
