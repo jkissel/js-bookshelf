@@ -19,6 +19,7 @@ util.print(util.inspect(obj) + '\n');
   * New documentation: http://couchdb.readthedocs.org/en/latest/
   * http://wiki.apache.org/couchdb/Security_Features_Overview
   * http://www.saggingcouch.com/ (JS interface)
+  * Configuring firewall: http://chrismckee.co.uk/setting-up-couchdb-on-ubuntu/
 *   Other bookshelf apps:
   *   http://www.steveworkman.com/html5-2/2010/css3-bookshelf/
   *   http://codecanyon.net/item/multipurpose-bookshelf-slider-jquery-plugin/1985655
