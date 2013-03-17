@@ -26,7 +26,8 @@ var OperationHelper = require('json-apac').OperationHelper;
 var opHelper = new OperationHelper({
   awsId:     config.awsId,
   awsSecret: config.awsSecret,
-  assocId:   config.partnerId
+  assocId:   config.partnerId,
+  endPoint:  config.endPoint
 });
 
 /*
