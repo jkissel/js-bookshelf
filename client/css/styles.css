@@ -1,3 +1,7 @@
+body {
+  background: transparent;
+}
+
 #bookshelf {
   width: 420px;
   padding: 65px 30px 0 30px;
