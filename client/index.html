@@ -21,7 +21,7 @@
       <p>
         <form action="">
           <input type="search" autocomplete="off" placeholder="type book name" autofocus="on" />
-          <button class="btn">Search</button>
+          <button class="btn" id="searchButton">Search</button>
         </form>
       </p>
     </div>
@@ -44,18 +44,25 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="https://raw.github.com/documentcloud/underscore/master/underscore.js"></script>
 
-  <script type="x-template" id="searchresult-tpl">
-    <% _.each(books, function(book) { %>
-    <tr>
-      <td><a href="<%= book.amazonUrl%>" target="_blank"><img src="<%= book.imgUrl %>" /></a></td>
-      <td><%= book.title %><br><span class="author"><%= book.author %></span></td>
-    </tr>
-    <% }); %>
-  </script>
 
   <script type="x-template" id="bookshelf-tpl">
     <% _.each(books, function(book) { %>
-      <li><a href="<%= book.amazonLink %>" target="_blank"><img src="<%= book.imageMedium %>" /></a></li>
+    <li><a href="<%= book.amazonLink %>" target="_blank"><img src="<%= book.imageMedium %>" /></a></li>
+    <% }); %>
+  </script>
+
+  <script type="x-template" id="searchresult-tpl">
+    <% _.each(books, function(book) { %>
+    <tr>
+      <td><a href="<%= book.amazonLink%>" target="_blank"><img src="<%= book.imageMedium %>" /></a></td>
+      <td>
+        <p>
+          <%= book.title %><br />
+          <span class="author"><%= book.author %></span>
+        </p>
+        <button class="btn btn-mini" type="button" data-id="<%= book.id %>"><i class="icon-plus"></i> Add</button>
+      </td>
+    </tr>
     <% }); %>
   </script>
 

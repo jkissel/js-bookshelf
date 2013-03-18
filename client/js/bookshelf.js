@@ -50,7 +50,7 @@ function initModalDialog() {
   var $searchField = $('#searchDialog input[type=search]');
   var $table = $('.modal-body tbody');
 
-  $('#searchDialog button').on('click', function(e) {
+  $('#searchButton').on('click', function(e) {
     e.preventDefault();
 
     var searchTerm = $searchField.val();
@@ -65,5 +65,9 @@ function initModalDialog() {
     function requestFailed(error) {
       window.alert('An error occured: ' + error.statusText);
     }
+  });
+
+  $table.on('click', 'button', function(evt) {
+
   });
 }

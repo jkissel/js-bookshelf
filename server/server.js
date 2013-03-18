@@ -62,8 +62,8 @@ app.get('/search', function(req, res) {
             id:  item.ASIN
           , author: [].concat(attr.Author)[0]
           , title: attr.Title
-          , amazonUrl: item.DetailPageURL
-          , imgUrl: img ? img.URL : ''
+          , amazonLink: item.DetailPageURL
+          , imageMedium: img ? img.URL : ''
           };
         });
 
