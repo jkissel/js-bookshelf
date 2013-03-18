@@ -39,39 +39,35 @@ var opHelper = new OperationHelper({
 /* search for a text string and return all matches with images */
 app.get('/search', function(req, res) {
   var text = req.query.text;
-  
+
   opHelper.execute('ItemSearch', {
-    'SearchIndex': 'Books',
-    'Keywords': text,
-    'ResponseGroup': 'ItemAttributes,Images'
+    'SearchIndex': 'Books'
+  , 'Keywords': text
+  , 'ResponseGroup': 'ItemAttributes,Images'
   }, function(statusCode, response) {
     if (statusCode) {
       console.log('Error: ' + statusCode + '\n');
       res.end();
     } else {
       var obj = JSON.parse(response).ItemSearchResponse.Items;
-      var output = '', imgUrl = '';
 
       if (!obj.Request.IsValid) {
         console.log('Invalid request: ' + obj.Request + '\n');
         res.end();
       } else {
-        output = obj.Item.map(function(item) {
-          imgUrl = (item.MediumImage === undefined ? '' : item.MediumImage.URL);
+        var output = obj.Item.map(function(item) {
+          var attr = item.ItemAttributes, img = item.MediumImage;
 
-          return '<li><a href="' + item.DetailPageURL + '">' + 
-            item.ItemAttributes.Title + '</a> (' + 
-            item.ASIN + ') --&gt; ' +
-            '<img src="' + imgUrl + '" /></li>';
+          return {
+            id:  item.ASIN
+          , author: [].concat(attr.Author)[0]
+          , title: attr.Title
+          , amazonUrl: item.DetailPageURL
+          , imgUrl: img ? img.URL : ''
+          };
         });
 
-        res.setHeader(CONTENT_TYPE_HEADER, MIME_TYPE_HTML);        
-        res.end('<html><head><title>Result</title></head><body>\n' +
-          '<h1>Found items:</h1>\n' + 
-          '<ul>' + output.join('<br />\n') + 
-          '</ul>\n' +
-          '</body></html>'
-          , ENCODING);
+        res.send({ books: output });
       }
     }
   });
@@ -80,7 +76,7 @@ app.get('/search', function(req, res) {
 /* get a specific item by ASIN id and return the image */
 app.get('/search/item/:id', function(req, res) {
   var id = req.params.id;
-  
+
   opHelper.execute('ItemLookup', {
     'ItemId': id,
     'IdType': 'ASIN',
@@ -108,7 +104,7 @@ app.get('/search/item/:id', function(req, res) {
 /* load all books of a certain user from the server */
 app.get('/:user/images', function(req, res) {
   var user = req.param('user');
-  
+
   //query database
 
   //return result as json
@@ -131,7 +127,7 @@ app.get('/:user/images', function(req, res) {
       }
     ],
     "readingList": []
-  }
+  };
   
   res.setHeader(CONTENT_TYPE_HEADER, MIME_TYPE_JSON);        
   res.end(JSON.stringify(result), ENCODING);

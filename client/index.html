@@ -20,15 +20,21 @@
       <h3 id="searchDialogLabel">Search for new books</h3>
       <p>
         <form action="">
-          <input type="search" autocomplete="off" placeholder="type book name"></input>
+          <input type="search" autocomplete="off" placeholder="type book name" autofocus="on" />
           <button class="btn">Search</button>
         </form>
       </p>
     </div>
     <div class="modal-body">
-      <ul>
-        <!-- <li><img src="img/sample3.jpg" /></li> -->
-      </ul>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>Cover</td>
+            <td>Title, Author</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
     <!-- Footer not needed at the moment
     <div class="modal-footer">
@@ -40,8 +46,19 @@
   
   <!-- Script section -->
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
   <script src="js/bookshelf.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://raw.github.com/documentcloud/underscore/master/underscore.js"></script>
+
+  <script type="x-template" id="book-tpl">
+    <% _.each(books, function(book) { %>
+    <tr>
+      <td><a href="<%= book.amazonUrl%>" target="_blank"><img src="<%= book.imgUrl %>" /></a></td>
+      <td><%= book.title %><br><span class="author"><%= book.author %></span></td>
+    </tr>
+    <% }); %>
+  </script>
+
 </body>
 </html>
 
