@@ -27,7 +27,7 @@ var opHelper = new OperationHelper({
   awsId:     config.awsId,
   awsSecret: config.awsSecret,
   assocId:   config.partnerId,
-  endPoint:  config.endPoint
+  endPoint:  config.awsEndPoint
 });
 
 /*
@@ -137,11 +137,9 @@ app.get('/:user/images', function(req, res) {
   res.end(JSON.stringify(result), ENCODING);
 });
 
-//todo: 
-/* add a book to reccomendations */
-/* remove a book from reccomendations */
+app.listen(config.port);
 
-app.listen(3000);
+console.log('Starting server at port ' + config.port + '...\n');
 
 /*
  *******************
