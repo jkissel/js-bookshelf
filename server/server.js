@@ -51,7 +51,7 @@ app.get('/search', function(req, res) {
     } else {
       var obj = JSON.parse(response).ItemSearchResponse.Items;
 
-      if (!obj.Request.IsValid) {
+      if (!obj.Request.IsValid || !obj.Item) {
         console.log('Invalid request: ' + obj.Request + '\n');
         res.end();
       } else {
