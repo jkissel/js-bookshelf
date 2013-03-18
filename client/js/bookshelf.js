@@ -15,16 +15,10 @@ function loadReccomendations() {
   $.ajax(dataUrl, { dataType: 'json' }).then(requestSuccess, requestFailed);
 
   function requestSuccess(res) {
-    $bookshelf.html(res.rows.map(toBook).map(toHtml).join(''));
+    $bookshelf.html(renderBookshelf({ books: res.rows.map(toBook) }));
 
     function toBook(row) {
       return row.doc;
-    }
-
-    function toHtml(book) {
-      return '<li><a href="' + book.amazonLink + '">'
-           +   '<img src="' + book.imageMedium + '" />'
-           + '</a></li>';
     }
   }
 
@@ -33,11 +27,19 @@ function loadReccomendations() {
   }
 }
 
-var tplBook;
+var tplBook, tplBookshelf;
+
+function renderBookshelf(data) {
+  if (! tplBookshelf) {
+    tplBookshelf = _.template($('#bookshelf-tpl').text());
+  }
+
+  return tplBookshelf(data);
+}
 
 function renderBook(data) {
   if (! tplBook) {
-    tplBook = _.template($('#book-tpl').text());
+    tplBook = _.template($('#searchresult-tpl').text());
   }
 
   return tplBook(data);
@@ -57,7 +59,6 @@ function initModalDialog() {
         .then(requestSuccess, requestFailed);
 
     function requestSuccess(res) {
-      console.log(res);
       $table.html(renderBook(res));
     }
 

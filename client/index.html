@@ -8,7 +8,7 @@
 </head>
 <body>
   <ul id="bookshelf">
-    <!-- <li><img src="img/sample1.jpg" /></li> -->
+
   </ul>
 
   <a href="#searchDialog" role="button" class="btn" data-toggle="modal">Add book</a>
@@ -50,12 +50,18 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="https://raw.github.com/documentcloud/underscore/master/underscore.js"></script>
 
-  <script type="x-template" id="book-tpl">
+  <script type="x-template" id="searchresult-tpl">
     <% _.each(books, function(book) { %>
     <tr>
       <td><a href="<%= book.amazonUrl%>" target="_blank"><img src="<%= book.imgUrl %>" /></a></td>
       <td><%= book.title %><br><span class="author"><%= book.author %></span></td>
     </tr>
+    <% }); %>
+  </script>
+
+  <script type="x-template" id="bookshelf-tpl">
+    <% _.each(books, function(book) { %>
+      <li><a href="<%= book.amazonLink %>" target="_blank"><img src="<%= book.imageMedium %>" /></a></li>
     <% }); %>
   </script>
 
