@@ -87,50 +87,17 @@ app.get('/search/item/:id', function(req, res) {
       res.end();
     } else {
       var obj = JSON.parse(response).ItemLookupResponse.Items;
-      var imgUrl = '';
 
       if (!obj.Request.IsValid) {
         console.log('Invalid request: ' + obj.Request + '\n');
         res.end();
       } else {
-        imgUrl = (obj.Item.MediumImage === undefined ? '' : obj.Item.MediumImage.URL);
+        var imgUrl = (obj.Item.MediumImage === undefined ? '' : obj.Item.MediumImage.URL);
         res.setHeader(CONTENT_TYPE_HEADER, MIME_TYPE_HTML);
         res.end(imgUrl, ENCODING);
       }
     }
   });
-});
-
-/* load all books of a certain user from the server */
-app.get('/:user/images', function(req, res) {
-  var user = req.param('user');
-
-  //query database
-
-  //return result as json
-  var result = {
-    "user": "clica",
-    "recommendations": [
-      {
-        "title": "The Odyssey",
-        "author": "Homer",
-        "asin": "1613823398",
-        "imageMedium": "http://ecx.images-amazon.com/images/I/51-C0PTzTSL._SL160_.jpg",
-        "amazonLink": "http://www.amazon.com/The-Odyssey-Homer/dp/1613823398%3FSubscriptionId%3DAKIAI3LDQOZKHLBWPCMQ%26tag%3Dnull%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D1613823398"
-      },
-      {
-        "title": "The BRO Code",
-        "author": "Barney Stinson",
-        "asin": "143911000X",
-        "imageMedium": "http://ecx.images-amazon.com/images/I/51w81FQD6oL._SL160_.jpg",
-        "amazonLink": "http://www.amazon.com/The-Bro-Code-Barney-Stinson/dp/143911000X%3FSubscriptionId%3DAKIAI3LDQOZKHLBWPCMQ%26tag%3Dnull%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D143911000X"
-      }
-    ],
-    "readingList": []
-  };
-  
-  res.setHeader(CONTENT_TYPE_HEADER, MIME_TYPE_JSON);        
-  res.end(JSON.stringify(result), ENCODING);
 });
 
 app.listen(config.port);
