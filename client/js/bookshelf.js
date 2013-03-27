@@ -18,7 +18,7 @@ function loadRecommendations() {
   function requestSuccess(res) {
     $bookshelf.html(renderBookshelf({ books: res.rows.map(toBook) }));
     
-    //add clearfix so float:left will work correctly
+    //add css clear so float:left will work correctly
     $bookshelf.append('<div class="clear"></div>');
     
     function toBook(row) {
