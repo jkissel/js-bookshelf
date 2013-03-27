@@ -33,6 +33,14 @@ body {
   font-style: italic;
 }
 
+#searchDialog input {
+  margin-bottom: 0; /* layout fix for search field */
+}
+
+#searchDialog img {
+  height: 165px;
+}
+
 .clear {
   clear: both;
 }
