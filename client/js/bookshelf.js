@@ -6,6 +6,7 @@
 $(document).ready(function() {
   loadRecommendations();
   initModalDialog();
+  initDragAndDrop();
 });
 
 function loadRecommendations() {
@@ -16,7 +17,10 @@ function loadRecommendations() {
 
   function requestSuccess(res) {
     $bookshelf.html(renderBookshelf({ books: res.rows.map(toBook) }));
-
+    
+    //add clearfix so float:left will work correctly
+    $bookshelf.append('<div class="clear"></div>');
+    
     function toBook(row) {
       return row.doc;
     }
@@ -96,4 +100,11 @@ function initModalDialog() {
       $('#searchDialog').modal('hide');
     });
   });
+}
+
+function initDragAndDrop() {
+  var $bookshelf = $('#bookshelf');
+
+  $bookshelf.sortable(); //activate sortable nature
+  $bookshelf.disableSelection(); //disable text selection
 }

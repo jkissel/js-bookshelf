@@ -7,9 +7,7 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <ul id="bookshelf">
-
-  </ul>
+  <ul id="bookshelf"></ul>
 
   <a href="#searchDialog" role="button" class="btn" data-toggle="modal">Add book</a>
   
@@ -30,16 +28,11 @@
         <tbody></tbody>
       </table>
     </div>
-    <!-- Footer not needed at the moment
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-      <button class="btn btn-primary">Add book</button>
-    </div>
-    -->
   </div>
   
   <!-- Script section -->
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
   <script src="js/bookshelf.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="https://raw.github.com/documentcloud/underscore/master/underscore.js"></script>
@@ -47,14 +40,14 @@
 
   <script type="x-template" id="bookshelf-tpl">
     <% _.each(books, function(book) { %>
-    <li><a href="<%= book.amazonLink %>" target="_blank"><img src="<%= book.imageMedium %>" /></a></li>
+    <li class="ui-state-default"><a href="<%= book.amazonLink %>" target="_blank" title="<%= book.title %>"><img src="<%= book.imageMedium %>" /></a></li>
     <% }); %>
   </script>
 
   <script type="x-template" id="searchresult-tpl">
     <% _.each(books, function(book) { %>
     <tr>
-      <td><a href="<%= book.amazonLink%>" target="_blank"><img src="<%= book.imageMedium %>" /></a></td>
+      <td><a href="<%= book.amazonLink%>" target="_blank" title="Open in Amazon"><img src="<%= book.imageMedium %>" /></a></td>
       <td>
         <p>
           <%= book.title %><br />
@@ -68,4 +61,3 @@
 
 </body>
 </html>
-
