@@ -3,22 +3,39 @@
 // tell JSHint to ignore the underscore global
 /* global _ */
 
+/*
+ ***********************
+ * Init global variables
+ ***********************
+*/
+var tplBook, tplBookshelf, currentSearchResults,
+  dbBaseUri = '/couch/readinglists/', dbuser = 'clica';
+
+var MIME_TYPE_JSON = 'application/json';
+
 $(document).ready(function() {
   loadRecommendations();
   initModalDialog();
   initDragAndDrop();
+
+  addDeleteButtons();
 });
 
 function loadRecommendations() {
   var $bookshelf = $('#bookshelf');
-  var dataUrl = '/couch/readinglists/_design/readinglists/_view/readinglists?include_docs=true&startkey=["clica"]&endkey=["clica",{}]';
+  var dataUrl = 
+    dbBaseUri
+    + '_design/readinglists/_view/readinglists'
+    + '?include_docs=true&startkey=["'
+    + dbuser + '"]&endkey=["' + dbuser
+    + '",{}]';
 
   return $.ajax(dataUrl, { dataType: 'json' }).then(requestSuccess, requestFailed);
 
   function requestSuccess(res) {
     $bookshelf.html(renderBookshelf({ books: res.rows.map(toBook) }));
     
-    //add css clear so float:left will work correctly
+    //add css clear so float:left will work properly
     $bookshelf.append('<div class="clear"></div>');
     
     function toBook(row) {
@@ -32,11 +49,11 @@ function loadRecommendations() {
 }
 
 function addBookToRecommendations(book) {
-  var dataUrlBook = '/couch/readinglists/' + book.id
-    , dataUrlReadingList = '/couch/readinglists/clica';
+  var dataUrlBook = dbBaseUri + book.id
+    , dataUrlReadingList = dbBaseUri + dbuser;
 
   return $.ajax(dataUrlBook, {
-    contentType: 'application/json'
+    contentType: MIME_TYPE_JSON
   , type: 'PUT'
   , data: JSON.stringify(book)
   , processData: false
@@ -48,12 +65,10 @@ function addBookToRecommendations(book) {
     return $.ajax(dataUrlReadingList, {
       type: 'PUT'
     , data: JSON.stringify(readingList)
-    , contentType: 'application/json'
+    , contentType: MIME_TYPE_JSON
     });
   });
 }
-
-var tplBook, tplBookshelf, currentSearchResults;
 
 function renderBookshelf(data) {
   if (! tplBookshelf) {
@@ -107,4 +122,12 @@ function initDragAndDrop() {
 
   $bookshelf.sortable(); //activate sortable nature
   $bookshelf.disableSelection(); //disable text selection
+}
+
+function addDeleteButtons() {
+  var $bookshelf = $('#bookshelf');
+
+  $bookshelf.children(function(listItem) {
+    listItem.find('a').append('<i class="icon-trash"></i>');
+  });
 }

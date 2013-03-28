@@ -40,14 +40,23 @@
 
   <script type="x-template" id="bookshelf-tpl">
     <% _.each(books, function(book) { %>
-    <li class="ui-state-default"><a href="<%= book.amazonLink %>" target="_blank" title="<%= book.title %>"><img src="<%= book.imageMedium %>" /></a></li>
+    <li class="ui-state-default">
+      <div class="book-thumb">
+        <a href="<%= book.amazonLink %>" target="_blank" title="<%= book.title %>">
+          <img src="<%= book.imageMedium %>" />
+        </a>
+        <a href="#" class="delete-icon" title="Remove from bookshelf"></a>
+      </div>
+    </li>
     <% }); %>
   </script>
 
   <script type="x-template" id="searchresult-tpl">
     <% _.each(books, function(book) { %>
     <tr>
-      <td><a href="<%= book.amazonLink%>" target="_blank" title="Open in Amazon"><img src="<%= book.imageMedium %>" /></a></td>
+      <td>
+        <a href="<%= book.amazonLink%>" target="_blank" title="Open in Amazon"><img src="<%= book.imageMedium %>" /></a>
+      </td>
       <td>
         <p>
           <%= book.title %><br />

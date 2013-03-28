@@ -2,6 +2,12 @@ body {
   background: transparent;
 }
 
+/*
+ *******************
+ * Bookshelf
+ *******************
+*/
+
 #bookshelf {
   width: 420px;
   padding: 42px 30px 0 30px;
@@ -16,7 +22,17 @@ body {
   list-style-type: none;
 }
 
-#bookshelf li img {
+/*
+ *******************
+ * Books
+ *******************
+*/
+
+.book-thumb {
+  position: relative;
+}
+
+.book-thumb img {
   height: 115px;
   width: 81px;
   margin-bottom: 24px;
@@ -24,21 +40,26 @@ body {
   box-shadow: 0 0 3px 2px rgba(60, 60, 60, 0.7);
 }
 
-#bookshelf li img:hover {
- box-shadow: 0 0 3px 2px rgba(255, 252, 232, 0.7); 
+.book-thumb img:hover {
+  box-shadow: 0 0 3px 2px rgba(255, 252, 232, 0.7); 
 }
 
-#searchDialog td .author {
-  color: #888;
-  font-style: italic;
+.delete-icon {
+  display: none;
+  position: absolute;
+  top: -11px;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background-image: url(../img/close.png);
 }
 
-#searchDialog input {
-  margin-bottom: 0; /* layout fix for search field */
+.book-thumb:hover .delete-icon {
+  display: block;
 }
 
-#searchDialog img {
-  height: 165px;
+.delete-icon:hover {
+  background-image: url(../img/close_highlighted.png);
 }
 
 .clear {
