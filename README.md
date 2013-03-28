@@ -9,10 +9,6 @@ var util = require('util');
 util.print(util.inspect(obj) + '\n');
 ```
 
-*   Selection of modal dialog tools:
-  *   http://twitter.github.com/bootstrap/javascript.html#modals
-  *   https://github.com/jackmoore/colorbox
-  *   http://leanmodal.finelysliced.com.au/ (no iFrame support)
 *   CouchDB
   * API Reference: http://wiki.apache.org/couchdb/Complete_HTTP_API_Reference
   * Documentation: http://wiki.apache.org/couchdb/
