@@ -3,13 +3,11 @@
 // tell JSHint to ignore the underscore global
 /* global _ */
 
-/*
- ***********************
- * Init global variables
- ***********************
-*/
-var tplBook, tplBookshelf, currentSearchResults,
-  dbBaseUri = '/couch/readinglists/', dbuser = 'clica';
+var tplBook,
+    tplBookshelf,
+    currentSearchResults,
+    dbBaseUri = '/couch/readinglists/',
+    dbuser = 'clica';
 
 var MIME_TYPE_JSON = 'application/json';
 
@@ -23,7 +21,7 @@ $(document).ready(function() {
 
 function loadRecommendations() {
   var $bookshelf = $('#bookshelf');
-  var dataUrl = 
+  var dataUrl =
     dbBaseUri
     + '_design/readinglists/_view/readinglists'
     + '?include_docs=true&startkey=["'
@@ -34,10 +32,10 @@ function loadRecommendations() {
 
   function requestSuccess(res) {
     $bookshelf.html(renderBookshelf({ books: res.rows.map(toBook) }));
-    
+
     //add css clear so float:left will work properly
     $bookshelf.append('<div class="clear"></div>');
-    
+
     function toBook(row) {
       return row.doc;
     }

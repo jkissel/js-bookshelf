@@ -1,0 +1,171 @@
+/*
+  960 Grid System ~ Core CSS. <adjusted to js-bookshelf>
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+
+/* Container
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 425px;
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16 {
+  display: inline;
+  float: left;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+  margin-left: 0;
+}
+
+.omega {
+  margin-right: 0;
+}
+
+/* Grid >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .grid_1 {
+  width: 26px;
+}
+
+.container_16 .grid_2 {
+  width: 52px;
+}
+
+.container_16 .grid_3 {
+  width: 78px;
+}
+
+.container_16 .grid_4 {
+  width: 104px;
+}
+
+.container_16 .grid_5 {
+  width: 130px;
+}
+
+.container_16 .grid_6 {
+  width: 156px;
+}
+
+.container_16 .grid_7 {
+  width: 182px;
+}
+
+.container_16 .grid_8 {
+  width: 208px;
+}
+
+.container_16 .grid_9 {
+  width: 234px;
+}
+
+.container_16 .grid_10 {
+  width: 260px;
+}
+
+.container_16 .grid_11 {
+  width: 286px;
+}
+
+.container_16 .grid_12 {
+  width: 312px;
+}
+
+.container_16 .grid_13 {
+  width: 338px;
+}
+
+.container_16 .grid_14 {
+  width: 364px;
+}
+
+.container_16 .grid_15 {
+  width: 390px;
+}
+
+.container_16 .grid_16 {
+  width: 416px;
+}
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after,
+.container_16:before,
+.container_16:after {
+  content: '.';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after,
+.container_16:after {
+  clear: both;
+}
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix,
+.container_16 {
+  zoom: 1;
+}

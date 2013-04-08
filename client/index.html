@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <title>JS Bookshelf</title>
-  <link rel="stylesheet" href="css/bootstrap-full.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap-full.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/reset.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/text.css" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/960_16_col.css" />
 </head>
 <body>
-  <ul id="bookshelf"></ul>
+  <ul id="bookshelf" class="container_16"></ul>
 
   <a href="#searchDialog" role="button" class="btn" data-toggle="modal">Add book</a>
-  
+
   <!-- Modal Dialog -->
   <div id="searchDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="searchDialogLabel" aria-hidden="true">
     <div class="modal-header">
@@ -29,7 +32,7 @@
       </table>
     </div>
   </div>
-  
+
   <!-- Script section -->
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
@@ -40,7 +43,7 @@
 
   <script type="x-template" id="bookshelf-tpl">
     <% _.each(books, function(book) { %>
-    <li class="ui-state-default">
+    <li class="ui-state-default grid_4">
       <div class="book-thumb">
         <a href="<%= book.amazonLink %>" target="_blank" title="<%= book.title %>">
           <img src="<%= book.imageMedium %>" />
