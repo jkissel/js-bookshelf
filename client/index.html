@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <title>JS Bookshelf</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap-full.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="css/reset.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="css/text.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/resetAndtext.css" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" type="text/css" media="all" href="css/960_16_col.css" />
+
+  <!-- Script section -->
+  <script data-main="js/main" src="js/assets/require-jquery.js"></script>
 </head>
 <body>
   <ul id="bookshelf" class="container_16"></ul>
@@ -33,14 +37,7 @@
     </div>
   </div>
 
-  <!-- Script section -->
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-  <script src="js/bookshelf.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="https://raw.github.com/documentcloud/underscore/master/underscore.js"></script>
-
-
+  <!-- Templates -->
   <script type="x-template" id="bookshelf-tpl">
     <% _.each(books, function(book) { %>
     <li class="ui-state-default grid_4">
