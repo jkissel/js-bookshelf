@@ -2,7 +2,7 @@
 
 require.config({
   config: {
-    'collections/BookCollection' : {
+    'views/bookshelf' : {
       dbBaseUri: '/couch/readinglists/',
       dbUser: 'clica',
       searchBaseUri: '/booksearch/search'
@@ -34,10 +34,10 @@ require.config({
 require([
           'underscore', 
           'backbone', 
-          'collections/BookCollection',
-          'views/BookshelfView'], function(_, Backbone, BookCollection, BookshelfView) {
-  var bookCollection = window.books = new BookCollection();
+          'views/bookshelf'], function(_, Backbone, bookshelf) {
+  var bookCollection = window.books = new bookshelf.Collection();
+  
   bookCollection.fetch({ reset: true });
   
-  var bookshelfView = new BookshelfView({collection: bookCollection, el: $('#bookshelf')});
+  var bookshelfView = new bookshelf.View({ collection: bookCollection, el: $('#bookshelf') });
 });
