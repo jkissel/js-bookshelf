@@ -9,14 +9,11 @@
   <link rel="stylesheet" type="text/css" media="all" href="css/resetAndtext.css" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" type="text/css" media="all" href="css/960_16_col.css" />
-
-  <!-- Script section -->
-  <script data-main="js/main" src="js/assets/require-jquery.js"></script>
 </head>
 <body>
   <ul id="bookshelf" class="container_16"></ul>
 
-  <a href="#searchDialog" role="button" class="btn" data-toggle="modal">Add book</a>
+  <button class="btn" data-toggle="modal" data-target="#searchDialog">Add book</button>
 
   <!-- Modal Dialog -->
   <div id="searchDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="searchDialogLabel" aria-hidden="true">
@@ -61,6 +58,10 @@
       </td>
     </tr>
   </script>
+  
+  <!-- Script section -->
+  <script data-main="js/main" src="js/assets/require-jquery.js"></script>
+  <script src="js/assets/bootstrap.min.js"></script>
 
 </body>
 </html>

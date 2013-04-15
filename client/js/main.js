@@ -2,9 +2,11 @@
 
 require.config({
   config: {
-    'views/bookshelf' : {
+    'views/bookshelf': {
       dbBaseUri: '/couch/readinglists/',
-      dbUser: 'clica',
+      dbUser: 'clica'
+    },
+    'views/search': {
       searchBaseUri: '/booksearch/search'
     }
   },
@@ -34,10 +36,29 @@ require.config({
 require([
           'underscore', 
           'backbone', 
-          'views/bookshelf'], function(_, Backbone, bookshelf) {
-  var bookCollection = window.books = new bookshelf.Collection();
+          'views/bookshelf',
+          'views/search'], function(_, Backbone, bookshelf, search) {
+  var bookCollection = new bookshelf.Collection();
   
   bookCollection.fetch({ reset: true });
   
   var bookshelfView = new bookshelf.View({ collection: bookCollection, el: $('#bookshelf') });
+  
+  var searchCollection = new search.Collection();
+  var searchView = new search.View({ collection: searchCollection, el: $('.modal-body tbody')});
+  
+  var $searchField = $('#searchDialog input[type=search]');
+  $('#searchButton').on('click', function(e) {
+    e.preventDefault();
+
+    var searchTerm = $searchField.val();
+    
+    searchCollection.search(searchTerm);
+  });
+  
+  searchView.on('select:book', function(book) {
+    $('#searchDialog').modal('hide');
+    
+    bookCollection.add(book);
+  });
 });
