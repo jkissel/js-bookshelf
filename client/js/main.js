@@ -2,7 +2,7 @@
 
 require.config({
   config: {
-    'bookshelf' : {
+    'collections/BookCollection' : {
       dbBaseUri: '/couch/readinglists/',
       dbUser: 'clica',
       searchBaseUri: '/booksearch/search'
@@ -13,11 +13,7 @@ require.config({
     'underscore': 'assets/underscore.min',
     'backbone': 'assets/backbone.min',
     'bootstrap': 'assets/bootstrap.min',
-    'jquery-ui': 'assets/jquery-ui-1.10.2.custom.min',
-    'bookshelf': 'bookshelf',
-    'bookModel': 'models/Book',
-    'bookCollection': 'collections/BookCollection',
-    'bookView': 'views/BookView'
+    'jquery-ui': 'assets/jquery-ui-1.10.2.custom.min'
   },
 
   shim: {
@@ -35,6 +31,13 @@ require.config({
   }
 });
 
-require(['jquery', 'underscore', 'backbone', 'bookModel', 'bookshelf'], function($, _, Backbone, book, bs) {
-
+require([
+          'underscore', 
+          'backbone', 
+          'collections/BookCollection',
+          'views/BookshelfView'], function(_, Backbone, BookCollection, BookshelfView) {
+  var bookCollection = window.books = new BookCollection();
+  bookCollection.fetch({ reset: true });
+  
+  var bookshelfView = new BookshelfView({collection: bookCollection, el: $('#bookshelf')});
 });

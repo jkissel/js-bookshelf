@@ -1,14 +1,12 @@
 "use strict";
 //a book can come from search or couch!!
-define('book',
-       ['backbone',
-        'undescore',
-        'dbConfig',
-        'searchConfig'],
-      function(Backbone, _, dbConfig, searchConfig) {
+define(['backbone',
+        'underscore',
+        'module'],
+      function(Backbone, _, module) {
 
   var Book = Backbone.Model.extend({
-
+    idAttribute: '_id'
   });
 
   return Book;
