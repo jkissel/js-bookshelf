@@ -12,8 +12,8 @@ require.config({
   },
 
   paths: {
-    'underscore': 'assets/underscore.min',
-    'backbone': 'assets/backbone.min',
+    'underscore': 'assets/underscore',
+    'backbone': 'assets/backbone',
     'bootstrap': 'assets/bootstrap.min',
     'jquery-ui': 'assets/jquery-ui-1.10.2.custom.min'
   },
@@ -34,31 +34,31 @@ require.config({
 });
 
 require([
-          'underscore', 
-          'backbone', 
+          'underscore',
+          'backbone',
           'views/bookshelf',
           'views/search'], function(_, Backbone, bookshelf, search) {
   var bookCollection = new bookshelf.Collection();
-  
+
   bookCollection.fetch({ reset: true });
-  
+
   var bookshelfView = new bookshelf.View({ collection: bookCollection, el: $('#bookshelf') });
-  
+
   var searchCollection = new search.Collection();
   var searchView = new search.View({ collection: searchCollection, el: $('.modal-body tbody')});
-  
+
   var $searchField = $('#searchDialog input[type=search]');
   $('#searchButton').on('click', function(e) {
     e.preventDefault();
 
     var searchTerm = $searchField.val();
-    
+
     searchCollection.search(searchTerm);
   });
-  
+
   searchView.on('select:book', function(book) {
     $('#searchDialog').modal('hide');
-    
+
     bookCollection.add(book);
   });
 });
