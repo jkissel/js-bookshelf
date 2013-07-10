@@ -2,7 +2,7 @@
 //a book can come from search or couch!!
 define('book',
        ['backbone',
-        'undescore',
+        'underscore',
         'dbConfig',
         'searchConfig'],
       function(Backbone, _, dbConfig, searchConfig) {
